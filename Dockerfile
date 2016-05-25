@@ -7,7 +7,7 @@ MAINTAINER Jared Orcutt <jporcutt@gmail.com>
 
 VOLUME ["/var/lib/unifi/data"]
 ENTRYPOINT ["/etc/init.d/unifi","start"]
-EXPORT 8443
+EXPOSE 8443
 
 RUN echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' | sudo tee -a /etc/apt/sources.list.d/ubnt.list > /dev/null
 
