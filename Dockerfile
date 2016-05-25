@@ -5,7 +5,9 @@ FROM sdhibit/rpi-raspbian
 
 MAINTAINER Jared Orcutt <jporcutt@gmail.com>
 
-VOLUME ["/var/lib/unifi/data"]
+ENV DEBIAN_FRONTEND noninteractive
+
+VOLUME ["/var/lib/unifi", "/var/log/unifi", "/var/run/unifi", "/usr/lib/unifi/work"]
 
 EXPOSE 8080/tcp 8081/tcp 8443/tcp 8843/tcp 8880/tcp 3478/udp
 
@@ -23,5 +25,5 @@ net-tools
 RUN echo 'ENABLE_MONGODB=no' | tee -a /etc/mongodb.conf > /dev/null
 
 WORKDIR /var/lib/unifi
-ENTRYPOINT ["/usr/bin/java", "-Xmx1024M", "-jar", "/usr/lib/unifi/lib/ace.jar"]
+ENTRYPOINT ["/usr/bin/java", "-Xmx512M", "-jar", "/usr/lib/unifi/lib/ace.jar"]
 CMD ["start"]
