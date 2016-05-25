@@ -9,7 +9,7 @@ VOLUME ["/var/lib/unifi/data"]
 ENTRYPOINT ["/etc/init.d/unifi","start"]
 EXPOSE 8443
 
-RUN echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' | sudo tee -a /etc/apt/sources.list.d/ubnt.list > /dev/null
+RUN echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' | tee -a /etc/apt/sources.list.d/ubnt.list > /dev/null
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv C0A52C50
 
