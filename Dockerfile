@@ -22,4 +22,4 @@ net-tools
 
 RUN echo 'ENABLE_MONGODB=no' | tee -a /etc/mongodb.conf > /dev/null
 
-RUN /etc/init.d/unifi restart && bash
+ENTRYPOINT /etc/init.d/unifi restart && bash
