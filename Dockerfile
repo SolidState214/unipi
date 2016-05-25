@@ -6,7 +6,7 @@ FROM sdhibit/rpi-raspbian
 MAINTAINER Jared Orcutt <jporcutt@gmail.com>
 
 VOLUME ["/var/lib/unifi/data"]
-ENTRYPOINT ["/etc/init.d/unifi","start"]
+CMD ["/etc/init.d/unifi","start"]
 EXPOSE 8443
 
 RUN echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' | tee -a /etc/apt/sources.list.d/ubnt.list > /dev/null
