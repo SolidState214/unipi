@@ -20,5 +20,5 @@ unifi \
 net-tools
 
 
-RUN echo 'ENABLE_MONGODB=no' | sudo tee -a /etc/mongodb.conf > /dev/null
+RUN echo 'ENABLE_MONGODB=no' | tee -a /etc/mongodb.conf > /dev/null
 
