@@ -7,7 +7,7 @@ MAINTAINER Jared Orcutt <jporcutt@gmail.com>
 
 VOLUME ["/var/lib/unifi/data"]
 
-EXPOSE 8443
+EXPOSE 8080/tcp 8081/tcp 8443/tcp 8843/tcp 8880/tcp 3478/udp
 
 RUN echo 'deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti' | tee -a /etc/apt/sources.list.d/ubnt.list > /dev/null
 
@@ -22,4 +22,6 @@ net-tools
 
 RUN echo 'ENABLE_MONGODB=no' | tee -a /etc/mongodb.conf > /dev/null
 
-ENTRYPOINT /etc/init.d/unifi restart && bash
+WORKDIR /var/lib/unifi
+ENTRYPOINT ["/usr/bin/java", "-Xmx1024M", "-jar", "/usr/lib/unifi/lib/ace.jar"]
+CMD ["start"]
